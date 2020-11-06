@@ -60,17 +60,30 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "OnlineStor:build"
+            "browserTarget": "OnlineStor:build",
+            "proxyConfig": "proxy.config.js"
           },
           "configurations": {
             "production": {
               "browserTarget": "OnlineStor:build:production"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "OnlineStor:build:hmr"
             }
           }
         },
@@ -123,6 +136,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "OnlineStor"
 }
