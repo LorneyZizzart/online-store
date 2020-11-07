@@ -14,17 +14,17 @@ import { MenuService, SettingsService, TokenService, User } from '@core';
       <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
     </button>
 
-    <mat-menu #menu="matMenu">
-      <button routerLink="/profile/overview" mat-menu-item>
-        <mat-icon>account_circle</mat-icon>
+    <mat-menu #menu="matMenu" class="bg-azul1-store">
+      <button routerLink="/profile/overview" mat-menu-item class="text-white">
+        <mat-icon class="text-white">account_circle</mat-icon>
         <span>{{ 'user.profile' | translate }}</span>
       </button>
-      <button routerLink="/profile/settings" mat-menu-item>
-        <mat-icon>settings</mat-icon>
+      <button routerLink="/profile/settings" mat-menu-item class="text-white">
+        <mat-icon class="text-white">settings</mat-icon>
         <span>{{ 'user.settings' | translate }}</span>
       </button>
-      <button mat-menu-item (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
+      <button mat-menu-item class="text-white" (click)="logout()">
+        <mat-icon class="text-white">exit_to_app</mat-icon>
         <span>{{ 'user.logout' | translate }}</span>
       </button>
     </mat-menu>

@@ -5,3 +5,31 @@
 @import 'styles/grid';
 @import 'styles/helpers';
 @import 'styles/plugins';
+
+/* Color Theme Swatches in Hex */
+$Nebula-espacial-azul-1-hex: #153d77;
+$Nebula-espacial-azul-2-hex: #0367A6;
+$Nebula-espacial-azul-3-hex: #023859;
+$Nebula-espacial-azul-4-hex: #04BFBF;
+$Nebula-espacial-azul-5-hex: #0D0D0D;
+
+.header-store{
+    margin: 0;
+    background: rgb(21,61,119);
+    background: linear-gradient(90deg, $Nebula-espacial-azul-1-hex 0%,$Nebula-espacial-azul-2-hex 50%, $Nebula-espacial-azul-4-hex 100%);
+    border-radius: 20px;
+}
+
+.text-green-store{
+    color: $Nebula-espacial-azul-4-hex;
+}
+
+.bg-green-store{
+    background-color: $Nebula-espacial-azul-4-hex !important;
+    color: white !important;
+}
+
+.bg-azul1-store{
+    background: $Nebula-espacial-azul-1-hex;
+    color: white;
+}

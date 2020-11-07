@@ -6,9 +6,9 @@ import { SettingsService, User } from '@core';
   template: `
     <div class="matero-user-panel" fxLayout="column" fxLayoutAlign="center center">
       <img class="matero-user-panel-avatar" [src]="user.avatar" alt="avatar" width="64" />
-      <h4 class="matero-user-panel-name">{{ user.name }}</h4>
-      <h5 class="matero-user-panel-email">{{ user.email }}</h5>
-      <div class="matero-user-panel-icons">
+      <h4 class="matero-user-panel-name text-white">{{ user.name }}</h4>
+      <h5 class="matero-user-panel-email text-green-store">{{ user.email }}</h5>
+      <div class="matero-user-panel-icons text-white">
         <a routerLink="/profile/overview" mat-icon-button>
           <mat-icon>account_circle</mat-icon>
         </a>

@@ -8,10 +8,18 @@
   padding: 0;
   list-style: none;
 
+  .matero-sidemenu-item.active > a {
+    color: #04BFBF;
+  }
+
   .matero-sidemenu-item {
     display: block;
     height: auto;
     padding: 0;
+
+    a{
+      color: white;
+    }
 
     &.open {
       > .matero-sidemenu {

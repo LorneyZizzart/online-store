@@ -24,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // FireStorage
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 // -- FireStorage
 import { environment } from '@env/environment';
 
@@ -52,7 +52,11 @@ import { environment } from '@env/environment';
     AngularFirestoreModule, // auth
     AngularFireStorageModule, // storage
   ],
-  providers: [httpInterceptorProviders, appInitializerProviders],
+  providers: [
+    httpInterceptorProviders, 
+    appInitializerProviders,
+    {provide: BUCKET, useValue:'gs://online-store-6fdd2.appspot.com/'}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

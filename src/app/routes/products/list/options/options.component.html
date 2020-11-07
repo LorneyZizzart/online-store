@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<form [formGroup]="reactiveForm" class="form-field-full" (ngSubmit)="guardar()">
+    <input type="file" multiple="false" accept=".jpg, .png" style="display: none;" (change)="selecionarImg($event)"  #imageInput>
+      <div class="img-contener" (click)="imageInput.click()">
+        <img class="d-block w-full" [src]="imageSeleccionada || 'assets/images/img.png'" alt="">
+    </div>
+    <mat-form-field>
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="categori" required>
+          <mat-option *ngFor="let item of categories" [value]="item">{{item}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="reactiveForm.get('categori').invalid">El campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Simple placeholder" formControlName="name" required>
+        <mat-error *ngIf="reactiveForm.get('name').invalid">El campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput placeholder="Simple placeholder" formControlName="description" required></textarea>
+        <mat-error *ngIf="reactiveForm.get('description').invalid">El campo es requerido</mat-error>
+    </mat-form-field> 
+    <mat-dialog-actions style="margin-top: 20px;">
+        <button mat-raised-button mat-dialog-close>Cerrar</button>
+        <span fxFlex></span>
+        <button [disabled]="!btnAction" mat-raised-button cdkFocusInitial class="bg-green-store">{{btnOption}}</button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,24 @@
+<page-header></page-header>
+
+<div class="customizer-handle"
+    matTooltip="Nuevo producto"
+    cdkDrag
+    (cdkDragStarted)="handleDragStart($event)">
+    <button mat-fab  class="bg-green-store" (click)="newProduct()">
+    <mat-icon aria-label="Add product">add</mat-icon>
+    </button>
+</div>
+
+<mat-card class="m-y-24">
+    <mtx-grid [data]="list"
+        [columns]="columns"
+        [loading]="loading"
+        [cellTemplate]="{image: image}">
+    </mtx-grid>
+    <ng-template #image let-row let-index="index" let-col="colDef">
+        <div style="width: 80px;">
+            <img src="assets/images/computer.jpg" alt="" srcset="" width="100%">
+        </div>
+        
+    </ng-template>
+</mat-card>

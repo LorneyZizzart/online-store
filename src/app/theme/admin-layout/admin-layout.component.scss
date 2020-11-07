@@ -2,6 +2,10 @@
 @import '../style/transitions';
 @import '../style/breakpoints';
 
+mat-sidenav{
+  background: #153d77 !important;
+}
+
 .matero-container-wrap,
 .matero-container {
   height: 100%;
