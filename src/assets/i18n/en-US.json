@@ -80,9 +80,9 @@
     "invalid_email": "Invalid email"
   },
   "user": {
-    "profile": "profile",
-    "settings": "settings",
-    "logout": "logout"
+    "profile": "Perfil",
+    "settings": "Configuraciones",
+    "logout": "Salir"
   },
   "login": {
     "fullname": "Nombre completo",

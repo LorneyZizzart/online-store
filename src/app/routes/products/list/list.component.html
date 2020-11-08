@@ -34,11 +34,11 @@
 
     <ng-template #image let-row let-index="index" let-col="colDef">
         <div style="width: 80px;">
-            <img src="assets/images/computer.jpg" alt="" srcset="" width="100%">
+            <img [src]="row.imgUrl || 'assets/images/img.png'" alt="" srcset="" width="100%">
         </div> 
     </ng-template>
 
     <ng-template #price let-row let-index="index" let-col="colDef">
-        {{row.price ? row.price + ' $' : '' }}
+        {{row.price ? row.price + ' $' : 'Gratis' }}
     </ng-template>
 </mat-card>

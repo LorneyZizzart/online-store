@@ -23,10 +23,9 @@ export class ProductsListOptionsComponent implements OnInit {
   btnAction = true;
 
   imageSeleccionada: string | ArrayBuffer;
-  file: File;
-
+  file: any;
   categories = ['Repuestos', 'Aparato electrónico'];
-
+  
   constructor(private fb: FormBuilder,
     public dialogRef: MatDialogRef<ProductsListOptionsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -51,18 +50,19 @@ export class ProductsListOptionsComponent implements OnInit {
     this.reactiveForm = this.fb.group({
       categori: [null, Validators.required],
       name: [null, Validators.required],
-      price: [null, Validators.required],
+      price: [null],
       description: [null, Validators.required],
     });
   }
 
   editProduct(item:Product) {
-    this.title = 'Nuevo producto';
+    this.title = 'Editar producto';
+    this.imageSeleccionada = item.imgUrl;
     this.reactiveForm = this.fb.group({
       id: [item.id, Validators.required],
       categori: [item.categori, Validators.required],
       name: [item.name, Validators.required],
-      price: [item.price, Validators.required],
+      price: [item.price],
       description: [item.description, Validators.required],
     });
   }
@@ -78,9 +78,11 @@ export class ProductsListOptionsComponent implements OnInit {
 
   guardar(){    
     if(this.reactiveForm.valid){
+      this.btnAction = false;
+      this._toastrService.info('Registrando...');
       switch (this.data.opcion) {
-        case 'new':
-          this._productService.postProduct(this.reactiveForm.value)
+        case 'new':          
+          this._productService.saveProduct(this.reactiveForm.value, this.file)
             .then((response) => {
               this.mensaje({
                 ok:true,
@@ -121,11 +123,14 @@ export class ProductsListOptionsComponent implements OnInit {
   }
 
   mensaje(data:Result){
+    this.btnAction = true;
+    this._toastrService.clear();
     if(data.ok === true){
       this._toastrService.success(data.mensaje, data.titulo);
       this.dialogRef.close();
     }else if (data.ok === false){
       this._toastrService.error(data.mensaje, data.titulo);
+      this.dialogRef.close();
     }else{
       this._toastrService.info(data.mensaje, data.titulo);
     }

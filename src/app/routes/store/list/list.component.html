@@ -1,6 +1,6 @@
 <div class="contenedor-card">
     <mat-card *ngFor="let item of list" class="mat-elevation-z3 r-full-8">
-        <img mat-card-image class="img-uniforme" src="assets/images/computer.jpg" alt="Img product">
+        <img mat-card-image class="img-uniforme" [src]="item.imgUrl || 'assets/images/img.png'" alt="Img product">
         <mat-card-header>
             <mat-card-title class="text-azul1-store">{{item.name}}</mat-card-title>
         </mat-card-header>
@@ -10,6 +10,5 @@
             <span fxFlex></span>
             <button mat-mini-fab aria-label="Add" class="bg-green-store"><mat-icon>add</mat-icon></button>
         </mat-card-content>
-    </mat-card>
-    
+    </mat-card>    
 </div>

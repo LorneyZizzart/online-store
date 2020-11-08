@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SettingsService, User } from '@core';
+import { Router } from '@angular/router';
+import { MenuService, SettingsService, TokenService, User } from '@core';
 
 @Component({
   selector: 'app-user-panel',
@@ -9,13 +10,13 @@ import { SettingsService, User } from '@core';
       <h4 class="matero-user-panel-name text-white">{{ user.name }}</h4>
       <h5 class="matero-user-panel-email text-green-store">{{ user.email }}</h5>
       <div class="matero-user-panel-icons text-white">
-        <a routerLink="/profile/overview" mat-icon-button>
+        <a mat-icon-button>
           <mat-icon>account_circle</mat-icon>
         </a>
-        <a routerLink="/profile/settings" mat-icon-button>
-          <mat-icon>settings</mat-icon>
+        <a routerLink="/" mat-icon-button>
+          <mat-icon>store</mat-icon>
         </a>
-        <a routerLink="/auth/login" mat-icon-button>
+        <a (click)="logout()" mat-icon-button>
           <mat-icon>exit_to_app</mat-icon>
         </a>
       </div>
@@ -26,7 +27,17 @@ import { SettingsService, User } from '@core';
 export class UserPanelComponent {
   user: User;
 
-  constructor(settings: SettingsService) {
+  constructor(private settings: SettingsService,
+    private router: Router,
+    private token: TokenService,
+    private menu: MenuService) {
     this.user = settings.user;
+  }
+
+  logout() {
+    this.token.clear();
+    this.settings.removeUser();
+    this.menu.reset();
+    this.router.navigateByUrl('/auth/login');
   }
 }

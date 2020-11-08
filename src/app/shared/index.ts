@@ -19,3 +19,4 @@ export * from './utils/convertDataFire';
 export * from './interfaces/usuario.interface';
 export * from './interfaces/result.interface';
 export * from './interfaces/client.interface';
+export * from './interfaces/fileImg.interface';
