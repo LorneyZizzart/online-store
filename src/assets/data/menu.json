@@ -19,10 +19,10 @@
       "icon":"store"
     },
     {
-      "route": "admin/sale",
-      "name":"sale",
+      "route": "admin/order",
+      "name":"order",
       "type":"link",
-      "icon":"poll"
+      "icon":"local_shipping"
     }
   ]
 }

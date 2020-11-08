@@ -1,0 +1,59 @@
+<h2 mat-dialog-title>Completar pedido</h2>
+<form [formGroup]="reactiveForm" (ngSubmit)="sendSMS()">
+    <mat-dialog-content>
+        <div fxLayout="row wrap" fxLayoutGap="8px grid">
+            <mat-form-field fxFlex="100" fxFlex.lt-sm="100">
+                <mat-label>Método de pago</mat-label>
+                <mat-select formControlName="typePayment" required>
+                <mat-option *ngFor="let item of typesPayment" [value]="item">{{item}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="reactiveForm.get('typePayment').invalid">El campo es requerido</mat-error>
+            </mat-form-field>
+            
+            <div *ngIf="transfer" class="w-full text-center">
+                <input type="file" multiple="false" accept=".jpg, .png" style="display: none;" (change)="selecionarImg($event)"  #imageInput>
+                <div class="img-contener" (click)="imageInput.click()">
+                    <img class="d-block w-full" [src]="imageSeleccionada || 'assets/images/img.png'" alt="">
+                </div>
+                <p class="text-azul2-store">Debe realizar un deposito al <strong>BANCO PERU</strong>  al número de cuenta <strong>8464 6413 213 54</strong> y el voucher debe enviar al número que le aparecera después de enviar su pedido.</p>
+            </div>
+
+            <mat-form-field fxFlex="100" fxFlex.lt-sm="100">
+                <mat-label>Celular</mat-label>
+                <input matInput type="number" placeholder="Simple placeholder" formControlName="phone" required>
+                <mat-error *ngIf="reactiveForm.get('phone').invalid">El campo es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="50" fxFlex.lt-sm="100">
+                <mat-label>Fecha de envio</mat-label>
+                <input matInput type="date" placeholder="Simple placeholder" formControlName="date" required>
+                <mat-error *ngIf="reactiveForm.get('date').invalid">El campo es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="50" fxFlex.lt-sm="100">
+                <mat-placeholder>Hora</mat-placeholder>
+                <mat-datetimepicker-toggle [for]="timePicker" matSuffix></mat-datetimepicker-toggle>
+                <mat-datetimepicker #timePicker openOnFocus="true" timeInterval="5" type="time">
+                </mat-datetimepicker>
+                <input [matDatetimepicker]="timePicker" formControlName="time" matInput required>
+                <mat-error *ngIf="reactiveForm.get('time').invalid">El campo es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100" fxFlex.lt-sm="100">
+                <mat-label>Dirección</mat-label>
+                <input matInput placeholder="Simple placeholder" formControlName="address" required>
+                <mat-error *ngIf="reactiveForm.get('address').invalid">El campo es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100" fxFlex.lt-sm="100">
+                <mat-label>Nota</mat-label>
+                <textarea matInput placeholder="Simple placeholder" formControlName="note"></textarea>
+                <mat-error *ngIf="reactiveForm.get('note').invalid">El campo es requerido</mat-error>
+            </mat-form-field> 
+        </div>    
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <button [disabled]="reactiveForm.invalid" [loading]="loading" mat-raised-button class="bg-green-store w-full"><mat-icon>send</mat-icon> {{btnOption}}</button>
+    </mat-dialog-actions>
+</form>  

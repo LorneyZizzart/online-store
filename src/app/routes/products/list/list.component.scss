@@ -1,6 +1,12 @@
+$Nebula-espacial-azul-4-hex: #04BFBF;
 .customizer-handle {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    z-index: 200;  
-  }
+    z-index: 200;
+    
+    .btn-add{
+      background-color: $Nebula-espacial-azul-4-hex !important;
+      color: white !important;
+    }
+}

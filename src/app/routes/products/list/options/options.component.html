@@ -28,7 +28,7 @@
     <mat-dialog-actions style="margin-top: 20px;">
         <button mat-raised-button mat-dialog-close>Cerrar</button>
         <span fxFlex></span>
-        <button [disabled]="!btnAction" mat-raised-button cdkFocusInitial class="bg-green-store">{{btnOption}}</button>
+        <button mat-raised-button [loading]="loading" cdkFocusInitial class="bg-green-store">{{btnOption}}</button>
     </mat-dialog-actions>
 </form>
 

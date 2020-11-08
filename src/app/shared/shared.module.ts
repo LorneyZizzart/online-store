@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ErrorCodeComponent } from './components/error-code/error-code.component';
+import { TotalOrderPipe } from './pipes/totalOrder.pipe';
 
 const THIRD_MODULES = [
   MaterialModule,
@@ -35,7 +36,7 @@ const THIRD_MODULES = [
 const COMPONENTS = [BreadcrumbComponent, PageHeaderComponent, ErrorCodeComponent];
 const COMPONENTS_DYNAMIC = [];
 const DIRECTIVES = [];
-const PIPES = [];
+const PIPES = [TotalOrderPipe];
 
 @NgModule({
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES],

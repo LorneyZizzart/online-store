@@ -32,7 +32,7 @@ export class SaleListComponent implements OnInit {
   }
 
   getProducts(client){
-    this._clientService.getOrders(client.data.id).subscribe(data => {
+    this._clientService.getOrdersPending(client.data.id).subscribe(data => {
       for(let item of this.list){
         if(item.id === client.data.id){
           item.products = ConvertData.getFire(data);

@@ -39,17 +39,17 @@ export class ClientService {
       return this.firestore.collection('Client').doc(client.id.toString()).set(client);
     }
 
-    // Order
+    // Order Pending
 
-    getOrders(idClient:string){
-      return this.firestore.collection('Client').doc(idClient).collection('Product').snapshotChanges();
+    getOrdersPending(idClient:string){
+      return this.firestore.collection('Client').doc(idClient).collection('OrderPending').snapshotChanges();
     }
 
-    postOrder(idClient:string, product: Product){
-      return this.firestore.collection('Client').doc(idClient).collection('Product').add(product);
+    postOrderPending(idClient:string, product: Product){
+      return this.firestore.collection('Client').doc(idClient).collection('OrderPending').add(product);
     }
 
-    deleteOrder(idClient: string, idProduct:string): Promise<void> {
-      return this.firestore.collection('Client').doc(idClient).collection('Product').doc(idProduct).delete();
+    deleteOrderPending(idClient: string, idOrderPending:string): Promise<void> {
+      return this.firestore.collection('Client').doc(idClient).collection('OrderPending').doc(idOrderPending).delete();
     }
 }

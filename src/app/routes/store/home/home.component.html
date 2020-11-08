@@ -33,7 +33,7 @@
                 </ng-template>
             </mat-card-content>
             <mat-card-content>
-                <button [disabled]="btnOrder" mat-raised-button class="w-full bg-azul2-store">Realizar compra</button>
+                <button [disabled]="btnOrder" mat-raised-button class="w-full bg-azul2-store" (click)="makeOrder(orders)">Realizar compra</button>
             </mat-card-content>
           </mat-card>
     </div>

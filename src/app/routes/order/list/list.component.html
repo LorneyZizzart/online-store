@@ -1,0 +1,24 @@
+<page-header title="Pedidos"></page-header>
+
+<mat-card class="m-y-24">
+    <mtx-grid [data]="list"
+        [columns]="columns"
+        [loading]="loading"
+        [expandable]="true"
+        [expansionTemplate]="expansionTpl">
+    </mtx-grid>  
+    <ng-template #expansionTpl let-row>
+        <mat-list role="list" style="width: 50%;">
+                <h3 mat-subheader>Compras</h3>
+                <mat-list-item role="listitem" *ngFor="let item of row.products">
+                    <img mat-list-avatar style="border-radius: 0px !important;   width: auto;" [src]="item.imgUrl">
+                    <div mat-list-icgon><p class="text-azul2-store f-w-900">{{ item.price ? item.price + ' $' : 'Gratis'}}</p></div>
+                    <p mat-line>{{item.name}}</p>                       
+                </mat-list-item>
+        </mat-list>
+        <div class="text-center" style="width: 50%;">
+            <p>Total</p>
+            <h1>{{row.products | totalOrder}}</h1>
+        </div>
+    </ng-template>
+</mat-card>

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { SettingsService, User } from '@core';
 import { ClientService, ConvertData } from '@shared';
 import { Product } from '@shared/interfaces/product.interface';
+import { StoreOrderComponent } from '../order/order.component';
 
 @Component({
   selector: 'app-store-home',
@@ -18,7 +21,9 @@ export class StoreHomeComponent implements OnInit {
   user: User;
 
   constructor(private _clientService:ClientService,
-    settings: SettingsService) { 
+    settings: SettingsService,
+    private router: Router,
+    public _dialog: MatDialog) { 
       this.user = settings.user;
   }
 
@@ -27,26 +32,45 @@ export class StoreHomeComponent implements OnInit {
   }
 
   getOrders(){
-    this._clientService.getOrders(this.user.id).subscribe(data => {
-      this.orders  = ConvertData.getFire(data);
-      this.btnOrder = this.orders.length === 0 ? true : false;
-      this.cashTotal= this.orders.reduce((sum, value) => (typeof value.price == "number" ? sum + value.price : sum), 0);
-    })
+    if(this.user.email){
+      this._clientService.getOrdersPending(this.user.id).subscribe(data => {
+        this.orders  = ConvertData.getFire(data);
+        this.btnOrder = this.orders.length === 0 ? true : false;
+        this.cashTotal= this.orders.reduce((sum, value) => (typeof value.price == "number" ? sum + value.price : sum), 0);
+      })
+    }
   }
 
   addOrder(product:Product){
-    delete product.id;
-    this._clientService.postOrder(this.user.id, product);
+    if(this.user.email){
+      delete product.id;
+      this._clientService.postOrderPending(this.user.id, product);
+    }else{
+      this.router.navigateByUrl('/auth/login');
+    }
+    
   }
 
   resetOrders(){
     for(let item of this.orders){
-      this.deleteProduct(item);
+      this.deleteOrdersPending(item);
     }
   }
 
-  deleteProduct(product:Product){
-    this._clientService.deleteOrder(this.user.id, product.id);
+  deleteOrdersPending(product:Product){
+    this._clientService.deleteOrderPending(this.user.id, product.id);
+  }
+
+  makeOrder(item){
+    const dialogRef = this._dialog.open(StoreOrderComponent, {
+      width: '600px',
+      data : item
+    });
+    dialogRef.afterClosed().subscribe(result =>{
+      if(result?.empty){
+        this.resetOrders();
+      }
+    });
   }
 
 }

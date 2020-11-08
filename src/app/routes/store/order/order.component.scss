@@ -1,0 +1,19 @@
+.img-contener{
+    height: 200px;
+    max-height: 200px;
+    width: 300px;
+    margin: 0 auto;
+    border: solid 1px #0e2951;
+    padding: 2px;
+    border-radius: 5px;
+
+    img{
+        height: 195px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .img-contener{
+        width: 100%;
+    }
+}

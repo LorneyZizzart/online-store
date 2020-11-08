@@ -20,8 +20,8 @@ export class ProductsListOptionsComponent implements OnInit {
   title: string = null;
   color = 'primary';
   btnOption = 'Guardar';
-  btnAction = true;
 
+  loading = false;
   imageSeleccionada: string | ArrayBuffer;
   file: any;
   categories = ['Repuestos', 'Aparato electrónico'];
@@ -79,7 +79,7 @@ export class ProductsListOptionsComponent implements OnInit {
 
   guardar(){    
     if(this.reactiveForm.valid){
-      this.btnAction = false;
+      this.loading = true;
       this._toastrService.info('Registrando...');
       switch (this.data.opcion) {
         case 'new':          
@@ -124,7 +124,7 @@ export class ProductsListOptionsComponent implements OnInit {
   }
 
   mensaje(data:Result){
-    this.btnAction = true;
+    this.loading = false;
     this._toastrService.clear();
     if(data.ok === true){
       this._toastrService.success(data.mensaje, data.titulo);
