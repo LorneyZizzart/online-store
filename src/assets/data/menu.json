@@ -13,7 +13,7 @@
       "icon":"style"
     },
     {
-      "route": "admin/store",
+      "route": "admin/store/list",
       "name":"store",
       "type":"link",
       "icon":"store"

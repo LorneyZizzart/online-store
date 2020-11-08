@@ -21,7 +21,7 @@ export class ProductService {
     return this.firestore.collection('Product').snapshotChanges();
   }
 
-  saveProduct(product: Product, image?: FileImg) {
+  saveProduct(product: Product, image?: FileImg):Promise<any> {
     if (image) {
       return this.saveProductWithImage(product, image);
     } else {
@@ -29,16 +29,22 @@ export class ProductService {
     }
   }
 
-  private postProduct(product: Product): Promise<DocumentReference> {
-    return this.firestore.collection('Product').add(product);
+  updateProduct(product: Product, image?: FileImg):Promise<any> {
+    if (image) {
+      return this.updateProductWithImage(product, image);
+    } else {
+      return this.putProduct(product);
+    }
   }
+
+  
 
   deleteProduct(id: any): Promise<void> {
     return this.firestore.collection('Product').doc(id).delete();
   }
 
-  putProduct(product: Product): Promise<void> {
-    return this.firestore.collection('Product').doc(product.id.toString()).set(product);
+  private postProduct(product: Product): Promise<DocumentReference> {
+    return this.firestore.collection('Product').add(product);
   }
 
   private saveProductWithImage(product: Product, image: FileImg): Promise<any>{
@@ -53,6 +59,30 @@ export class ProductService {
             fileRef.getDownloadURL().subscribe(urlImage => {
               product.imgUrl = urlImage;
               this.firestore.collection('Product').add(product).then(data => {
+                resolve({ok:true, data});
+              });
+            });
+          })
+        ).subscribe();
+    });
+  }
+
+  private putProduct(product: Product): Promise<void> {
+    return this.firestore.collection('Product').doc(product.id.toString()).set(product);
+  }
+
+  private updateProductWithImage(product: Product, image: FileImg): Promise<any>{
+    return new Promise(resolve => { 
+      const filePath = this.generateFileName(image.name);
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, image);
+      this.uploadPorcent =  task.percentageChanges();
+      task.snapshotChanges()
+        .pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(urlImage => {
+              product.imgUrl = urlImage;
+              this.firestore.collection('Product').doc(product.id.toString()).set(product).then(data => {
                 resolve({ok:true, data});
               });
             });

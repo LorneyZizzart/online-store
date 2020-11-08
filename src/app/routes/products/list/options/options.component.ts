@@ -64,6 +64,7 @@ export class ProductsListOptionsComponent implements OnInit {
       name: [item.name, Validators.required],
       price: [item.price],
       description: [item.description, Validators.required],
+      imgUrl: [item.imgUrl],
     });
   }
 
@@ -99,7 +100,7 @@ export class ProductsListOptionsComponent implements OnInit {
             });      
           break;
         case 'edit':
-          this._productService.putProduct(this.reactiveForm.value)
+          this._productService.updateProduct(this.reactiveForm.value, this.file)
             .then((response) => {
               this.mensaje({
                 ok:true,
