@@ -17,6 +17,11 @@
         <mat-error *ngIf="reactiveForm.get('name').invalid">El campo es requerido</mat-error>
     </mat-form-field>
     <mat-form-field>
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" placeholder="Simple placeholder" formControlName="price" required>
+        <mat-error *ngIf="reactiveForm.get('price').invalid">El campo es requerido</mat-error>
+    </mat-form-field>
+    <mat-form-field>
         <mat-label>Descripcion</mat-label>
         <textarea matInput placeholder="Simple placeholder" formControlName="description" required></textarea>
         <mat-error *ngIf="reactiveForm.get('description').invalid">El campo es requerido</mat-error>

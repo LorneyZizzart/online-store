@@ -15,11 +15,11 @@ import { MenuService, SettingsService, TokenService, User } from '@core';
     </button>
 
     <mat-menu #menu="matMenu" class="bg-azul1-store">
-      <button routerLink="/profile/overview" mat-menu-item class="text-white">
+      <button  mat-menu-item class="text-white">
         <mat-icon class="text-white">account_circle</mat-icon>
         <span>{{ 'user.profile' | translate }}</span>
       </button>
-      <button routerLink="/profile/settings" mat-menu-item class="text-white">
+      <button  mat-menu-item class="text-white">
         <mat-icon class="text-white">settings</mat-icon>
         <span>{{ 'user.settings' | translate }}</span>
       </button>

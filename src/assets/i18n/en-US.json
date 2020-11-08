@@ -70,13 +70,13 @@
     "helpers.css-class": "CSS Class"
   },
   "validations": {
-    "required": "This field is required",
+    "required": "El campo es requerido",
     "minlength": "Should have atleast {{number}} characters",
     "maxlength": "This value should be less than {{number}} characters",
     "min": "This value should be more than {{number}}",
     "max": "This value should be less than {{number}}",
     "exist": "The {{value}} has exists",
-    "inconsistent": "Inconsistent with {{value}}",
+    "inconsistent": "No coinciden las contraseñas",
     "invalid_email": "Invalid email"
   },
   "user": {
@@ -85,6 +85,9 @@
     "logout": "logout"
   },
   "login": {
+    "fullname": "Nombre completo",
+    "user": "Usuario",
+    "email": "Correo electrónico",
     "title": "Welcome Back",
     "username": "Username",
     "password": "Password",
@@ -95,12 +98,12 @@
     "please_enter": "Please enter"
   },
   "register": {
-    "welcome": "Welcome",
-    "title": "It only takes a few seconds to create your account",
+    "welcome": "Bienvenido",
+    "title": "Formulario de registro, para crear una cuenta",
     "confirm_password": "Confirm Password",
-    "agree": "I have read and agree to the terms of service",
-    "have_an_account": "Already have an account",
+    "agree": "He leído y acepto los términos de servicio",
+    "have_an_account": "¿Ya tienes una cuenta",
     "signin": "Sign in",
-    "register": "Create account"
+    "register": "Crear una cuenta"
   }
 }

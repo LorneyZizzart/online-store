@@ -53,7 +53,7 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
         data: { title: 'Register', titleI18n: 'Register' },
-      },
+      }
     ],
   },
   { path: '**', redirectTo: 'store' },

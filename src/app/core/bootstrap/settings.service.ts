@@ -6,7 +6,9 @@ import { AppSettings, defaults } from '../settings';
 export const USER_KEY = 'usr';
 
 export interface User {
-  id: number;
+  id: string;
+  fullname?:string;
+  user?:string;
   name?: string;
   email?: string;
   avatar?: string;

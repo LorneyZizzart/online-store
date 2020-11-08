@@ -166,7 +166,6 @@ export class ClientLayoutComponent implements OnInit {
       this.router.navigateByUrl('/');
       this.user = {id:null, email:null};
     }else{
-      console.log('no existe');
        this.router.navigateByUrl('/auth/login');
     }
   }

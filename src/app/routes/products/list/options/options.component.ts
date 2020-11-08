@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService, Result } from '@shared';
+import { Product } from '@shared/interfaces/product.interface';
 import { ToastrService } from 'ngx-toastr';
 
 interface HtmlInputEvent extends Event {
@@ -35,22 +36,34 @@ export class ProductsListOptionsComponent implements OnInit {
   ngOnInit() {
     switch (this.data.opcion) {
       case 'new':
-        this.newProspecto();
+        this.newProduct();
         break;
       case 'edit':
-        // this.editProspecto(this.data.item);
+        this.editProduct(this.data.item);
         break;
       default:
         break;
     }
   }
 
-  newProspecto() {
+  newProduct() {
     this.title = 'Nuevo producto';
     this.reactiveForm = this.fb.group({
       categori: [null, Validators.required],
       name: [null, Validators.required],
+      price: [null, Validators.required],
       description: [null, Validators.required],
+    });
+  }
+
+  editProduct(item:Product) {
+    this.title = 'Nuevo producto';
+    this.reactiveForm = this.fb.group({
+      id: [item.id, Validators.required],
+      categori: [item.categori, Validators.required],
+      name: [item.name, Validators.required],
+      price: [item.price, Validators.required],
+      description: [item.description, Validators.required],
     });
   }
 
@@ -71,7 +84,7 @@ export class ProductsListOptionsComponent implements OnInit {
             .then((response) => {
               this.mensaje({
                 ok:true,
-                titulo:'Registro exitoso',
+                titulo:'Registrado',
                 mensaje:'El producto fue registrado satisfactoriamente.'
               })
             })
@@ -84,21 +97,21 @@ export class ProductsListOptionsComponent implements OnInit {
             });      
           break;
         case 'edit':
-          // this._prospectoService.updateProspecto(this.reactiveForm.value)
-          //   .then((response) => {
-          //     this.mensaje({
-          //       ok:true,
-          //       titulo:'Enhora buena',
-          //       mensaje:'Se ha actualizado el prospecto'
-          //     })
-          //   })
-          //   .catch((error) => {
-          //     this.mensaje({
-          //       ok:false,
-          //       titulo:'Error',
-          //       mensaje:'Se ha producido un error al agregar el prospecto'
-          //     })
-          //   });
+          this._productService.putProduct(this.reactiveForm.value)
+            .then((response) => {
+              this.mensaje({
+                ok:true,
+                titulo:'Actualizado',
+                mensaje:'El producto fue registrado satisactoriamente'
+              })
+            })
+            .catch((error) => {
+              this.mensaje({
+                ok:false,
+                titulo:'Error',
+                mensaje:'Se ha producido un error al actualizar el producto'
+              })
+            });
           break;
         default:
           break;

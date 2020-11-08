@@ -14,25 +14,15 @@
         border-radius: 8px;
 
         .img-uniforme{
-            max-height: 200px;
+            max-height: 140px;
             width: 200px;
+            height: 140px;
             margin: 0 auto;
         }
 
-        .text-detalle{
-            bottom: 20px;
-            height: 20px;
-            margin-bottom: 0px ;
-            position: absolute;
-            p{
-                color: #ff4081;
-                font-size: 11px;
-            }
-              .name_atributo{
-                font-size: 11px;
-                color: #3f51b5;
-                margin-right: 4px;
-            }
+        mat-card-content.desc{
+            height: 100px;
+            max-height: 100px;
         }
     }
 }

@@ -21,15 +21,16 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- <div class="m-y-16" fxLayout="row" fxLayoutAlign="space-between center">
-        <mat-checkbox>{{'login.remember_me' | translate}}</mat-checkbox>
-      </div> -->
+      <div class="m-y-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-checkbox>Recordarme</mat-checkbox>
+      </div>
 
       <button class="w-full bg-green-store" mat-raised-button (click)="login()">Ingresar</button>
 
-      <!-- <div class="m-t-16">{{'login.have_no_account' | translate}}?
-        <a routerLink="/auth/register">{{'login.create_one' | translate}}</a>
-      </div> -->
+      <div class="m-t-16">¿No tienes una cuenta?
+        <a routerLink="/auth/register">Haga clic aquí para crear</a>
+      </div>
+
     </form>
 
   </mat-card>
