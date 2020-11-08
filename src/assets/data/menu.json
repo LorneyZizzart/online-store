@@ -17,6 +17,12 @@
       "name":"store",
       "type":"link",
       "icon":"store"
+    },
+    {
+      "route": "admin/sale",
+      "name":"sale",
+      "type":"link",
+      "icon":"poll"
     }
   ]
 }

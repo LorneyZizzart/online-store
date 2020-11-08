@@ -34,7 +34,6 @@ export class ProductsListComponent implements OnInit {
     this._productService.getProducts().subscribe(data => {
       this.list  = ConvertData.getFire(data);
       this.loading = false;
-      console.log(this.list);
     }, error =>this._handlError.of(error));
   }
 

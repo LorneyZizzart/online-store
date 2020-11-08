@@ -3,39 +3,41 @@
         <mat-card class="p-0">
             <mat-card-header class="bg-green-store p-t-16 p-b-8">
                 <mat-icon mat-card-avatar class="m-l-8">shopping_cart</mat-icon>
-                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-title>Tu pedido</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <div class="p-4 text-gray-700">
+                <div *ngIf="orders.length == 0; else listOrder" class="p-4 text-gray-700">
                     <p>Carrito vacío. ¡Agregá los productos que quieras pedir!</p>
                     <mat-divider></mat-divider>
                 </div>
-                <mat-list role="list">
-                    <h3 mat-subheader>Pedidos</h3>
-                    <mat-list-item role="listitem" *ngFor="let folder of folders">
-                        <div mat-list-icgon><p class="text-azul2-store f-w-900">15 $</p></div>
-                        <p mat-line>{{folder.name}}</p>
-                        <div mat-line>
-                            <button mat-button color="warn" class="f-s-12 p-l-0"><mat-icon class="f-s-20">delete</mat-icon> Eliminar</button>
-                        </div>                        
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item role="listitem">
-                        <div mat-list-icgon><p class="text-azul2-store f-w-900 f-s-25">15 $</p></div>
-                        <h4 mat-line>Total</h4>
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item role="listitem">
-                        <button mat-button color="primary" class="m-x-auto"><mat-icon>refresh</mat-icon> Reiniciar pedido</button>
-                    </mat-list-item>
-                  </mat-list>
+                <ng-template #listOrder>
+                    <mat-list role="list">
+                        <h3 mat-subheader>Pedidos</h3>
+                        <mat-list-item role="listitem" *ngFor="let item of orders">
+                            <div mat-list-icgon><p class="text-azul2-store f-w-900">{{ item.price ? item.price + ' $' : 'Gratis'}}</p></div>
+                            <p mat-line>{{item.name}}</p>
+                            <div mat-line>
+                                <button mat-button color="warn" class="f-s-12 p-l-0" (click)="deleteProduct(item)"><mat-icon class="f-s-20">delete</mat-icon> Eliminar</button>
+                            </div>                        
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item role="listitem">
+                            <div mat-list-icgon><p class="text-azul2-store f-w-900 f-s-25">{{cashTotal}} $</p></div>
+                            <h4 mat-line class="f-w-900">Total</h4>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item role="listitem">
+                            <button mat-button color="primary" class="m-x-auto" (click)="resetOrders()"><mat-icon>refresh</mat-icon> Reiniciar pedido</button>
+                        </mat-list-item>
+                    </mat-list>
+                </ng-template>
             </mat-card-content>
             <mat-card-content>
-                <button mat-raised-button class="w-full bg-azul2-store">Realizar compra</button>
+                <button [disabled]="btnOrder" mat-raised-button class="w-full bg-azul2-store">Realizar compra</button>
             </mat-card-content>
           </mat-card>
     </div>
     <div fxFlex="70" fxFlex.lt-sm="100" fxFlex.lt-md="100"  class="matero-col">
-        <router-outlet></router-outlet>
+        <app-store-list (product)="addOrder($event)"></app-store-list>
     </div>
 </div>

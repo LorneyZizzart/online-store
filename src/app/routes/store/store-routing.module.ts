@@ -7,18 +7,12 @@ import { StoreAdminComponent } from './admin/admin.component';
 const routes: Routes = [  
   { path: '', 
     component: StoreHomeComponent,
-    children: [
-      { path: '', component: StoreListComponent },
-    ]
   },
   { path: 'list', 
     component: StoreAdminComponent, 
     children: [
       { path: '', 
-        component: StoreHomeComponent,
-        children: [
-          { path: '', component: StoreListComponent },
-        ]
+        component: StoreHomeComponent
       },
     ]
   },

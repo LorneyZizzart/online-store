@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { Client } from '@shared/interfaces/client.interface';
+import { Product } from '@shared/interfaces/product.interface';
 import { ConvertData } from '@shared/utils/convertDataFire';
 
 @Injectable({
@@ -36,5 +37,19 @@ export class ClientService {
   
     putClient(client: Client): Promise<void> {
       return this.firestore.collection('Client').doc(client.id.toString()).set(client);
+    }
+
+    // Order
+
+    getOrders(idClient:string){
+      return this.firestore.collection('Client').doc(idClient).collection('Product').snapshotChanges();
+    }
+
+    postOrder(idClient:string, product: Product){
+      return this.firestore.collection('Client').doc(idClient).collection('Product').add(product);
+    }
+
+    deleteOrder(idClient: string, idProduct:string): Promise<void> {
+      return this.firestore.collection('Client').doc(idClient).collection('Product').doc(idProduct).delete();
     }
 }
