@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>Completar pedido</h2>
-<form [formGroup]="reactiveForm" (ngSubmit)="sendSMS()">
+<form [formGroup]="reactiveForm" (ngSubmit)="sendOrder()">
     <mat-dialog-content>
         <div fxLayout="row wrap" fxLayoutGap="8px grid">
             <mat-form-field fxFlex="100" fxFlex.lt-sm="100">
@@ -15,7 +15,7 @@
                 <div class="img-contener" (click)="imageInput.click()">
                     <img class="d-block w-full" [src]="imageSeleccionada || 'assets/images/img.png'" alt="">
                 </div>
-                <p class="text-azul2-store">Debe realizar un deposito al <strong>BANCO PERU</strong>  al número de cuenta <strong>8464 6413 213 54</strong> y el voucher debe enviar al número que le aparecera después de enviar su pedido.</p>
+                <p class="text-azul2-store">Debe realizar un deposito al <strong>BANCO PERU</strong>  al número de cuenta <strong>8464 6413 213 54</strong> y el voucher debe subir al sistema.</p>
             </div>
 
             <mat-form-field fxFlex="100" fxFlex.lt-sm="100">

@@ -5,8 +5,19 @@
         [columns]="columns"
         [loading]="loading"
         [expandable]="true"
-        [expansionTemplate]="expansionTpl">
-    </mtx-grid>  
+        [showToolbar]="true"
+        [showColumnMenuButton]="true"
+        [toolbarTemplate]="toolbarTpl"
+        [expansionTemplate]="expansionTpl"
+        [cellTemplate]="{typePayment:view}">
+    </mtx-grid> 
+
+    
+    
+    <ng-template #toolbarTpl>
+        <input placeholder="Buscar por código" (keyup)="search($event.target.value)">
+    </ng-template>
+
     <ng-template #expansionTpl let-row>
         <mat-list role="list" style="width: 50%;">
                 <h3 mat-subheader>Compras</h3>
@@ -20,5 +31,10 @@
             <p>Total</p>
             <h1>{{row.products | totalOrder}}</h1>
         </div>
+    </ng-template>
+
+    <ng-template #view let-row let-index="index" let-col="colDef">
+        <button mat-button [color]="row.typePayment == 'Transferencia' ? 'primary' : ''" (click)="seeVoucher(row)">{{row.typePayment}}</button>
+        
     </ng-template>
 </mat-card>
