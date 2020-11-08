@@ -8,10 +8,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
 import { AuthGuard } from '@core';
+import { ClientLayoutComponent } from '@theme/client-layout/client-layout.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'admin',
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
@@ -32,6 +33,14 @@ const routes: Routes = [
     ],
   },
   {
+    path: '',
+    component: ClientLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'store', pathMatch: 'full' },
+      { path: 'store', loadChildren: () => import('./store/store.module').then(m => m.StoreModule) },
+    ],
+  },
+  {
     path: 'auth',
     component: AuthLayoutComponent,
     children: [
@@ -47,7 +56,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: 'store' },
 ];
 
 @NgModule({

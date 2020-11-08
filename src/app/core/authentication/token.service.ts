@@ -36,6 +36,7 @@ export class TokenService {
 
   clear() {
     this.store.remove(TOKEN_KEY);
+    this.store.remove('usr');
   }
 
   change(): Observable<TokenModel | null> {

@@ -20,8 +20,23 @@ $Nebula-espacial-azul-5-hex: #0D0D0D;
     border-radius: 20px;
 }
 
+.header-top{
+    background: rgb(21,61,119);
+    background: linear-gradient(90deg, $Nebula-espacial-azul-1-hex 0%,$Nebula-espacial-azul-2-hex 50%, $Nebula-espacial-azul-4-hex 100%);
+    border-bottom: unset;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
 .text-green-store{
     color: $Nebula-espacial-azul-4-hex;
+}
+
+.text-azul1-store{
+    color: $Nebula-espacial-azul-1-hex;
+}
+
+.text-azul2-store{
+    color: $Nebula-espacial-azul-2-hex;
 }
 
 .bg-green-store{
@@ -31,5 +46,10 @@ $Nebula-espacial-azul-5-hex: #0D0D0D;
 
 .bg-azul1-store{
     background: $Nebula-espacial-azul-1-hex;
+    color: white;
+}
+
+.bg-azul2-store{
+    background: $Nebula-espacial-azul-2-hex;
     color: white;
 }

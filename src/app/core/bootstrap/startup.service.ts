@@ -29,16 +29,7 @@ export class StartupService {
         .subscribe(
           (res: any) => {
             this.menu.recursMenuForTranslation(res.menu, 'menu');
-            this.menu.set(res.menu);
-
-            // Refresh user info
-            // In a real app, user data will be fetched form API
-            this.settings.setUser({
-              id: 1,
-              name: 'Jhonny',
-              email: 'tech-store.com',
-              avatar: '/assets/images/avatar.jpg',
-            });
+            this.menu.set(res.menu);       
           },
           () => {
             reject();

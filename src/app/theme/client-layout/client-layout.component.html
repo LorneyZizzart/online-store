@@ -1,0 +1,30 @@
+
+<div class="matero-container-wrap"
+    [ngClass]="{'matero-sidenav-collapsed': options.sidenavCollapsed && options.navPos!=='top',
+                'matero-navbar-side': options.navPos==='side',
+                'matero-navbar-top': options.navPos==='top',
+                'matero-header-above': options.headerPos==='above',
+                'matero-header-fixed': options.headerPos==='fixed',
+                'matero-header-white': options.theme==='light'}"
+    [dir]="options.dir">
+    <ng-progress></ng-progress>
+    <mat-sidenav-container class="matero-container" autosize autoFocus>
+        <mat-sidenav-content #content class="matero-content-wrap">
+            <mat-toolbar class="header-top" role="heading">
+                <a class="matero-branding" href="#/">
+                    <img src="./assets/images/logo.png" class="matero-branding-logo-expanded" alt="logo" />
+                    <span class="matero-branding-name text-white">ONLINE STORE</span>
+                  </a>
+                <span fxFlex></span>
+                <button mat-button class="btn-login" (click)="goLogin()">
+                    <img *ngIf="user.email" class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />
+                    {{ user.email ? user.name : 'Iniciar sesión'  }} 
+                    <mat-icon>exit_to_app</mat-icon>
+                </button>
+            </mat-toolbar>
+            <div class="matero-content">
+            <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

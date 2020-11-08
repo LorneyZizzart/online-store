@@ -1,16 +1,22 @@
 {
   "menu": [
     {
-      "route": "dashboard",
+      "route": "admin/dashboard",
       "name": "dashboard",
       "type": "link",
       "icon": "dashboard"
     },
     {
-      "route": "products",
+      "route": "admin/products",
       "name":"product",
       "type":"link",
       "icon":"style"
+    },
+    {
+      "route": "admin/store",
+      "name":"store",
+      "type":"link",
+      "icon":"store"
     }
   ]
 }

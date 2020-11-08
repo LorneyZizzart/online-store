@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { StoreRoutingModule } from './store-routing.module';
+import { StoreListComponent } from './list/list.component';
 
-const COMPONENTS = [];
+const COMPONENTS = [StoreListComponent];
 const COMPONENTS_DYNAMIC = [];
 
 @NgModule({

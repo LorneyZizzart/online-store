@@ -2,6 +2,7 @@
   "menu": {
     "dashboard": "Dashboard",
     "product":"Productos",
+    "store":"Tienda",
     "design": "Design",
     "design.colors": "Color System",
     "design.icons": "Material Icons",

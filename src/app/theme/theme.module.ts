@@ -19,6 +19,7 @@ import { BrandingComponent } from './header/widgets/branding.component';
 import { NotificationComponent } from './header/widgets/notification.component';
 import { TranslateComponent } from './header/widgets/translate.component';
 import { UserComponent } from './header/widgets/user.component';
+import { ClientLayoutComponent } from './client-layout/client-layout.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UserComponent } from './header/widgets/user.component';
     NotificationComponent,
     TranslateComponent,
     UserComponent,
+    ClientLayoutComponent,
   ],
   imports: [SharedModule],
 })

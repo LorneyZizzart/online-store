@@ -46,14 +46,19 @@ export class LoginComponent implements OnInit {
         this._toastrService.success(credencialesUsuario.user.displayName, 'Bienvenido');
         const { token, email, uid } = { token: 'ng-matero-token', uid: 1, email: this.loginForm.value.email};
         // Set user info
-        this.settings.setUser({ id: uid, email: email, avatar: '' });
+        this.settings.setUser({
+          id: 1,
+          name: 'Jhonny',
+          email: 'tech-store.com',
+          avatar: '/assets/images/avatar.jpg',
+        });
         // Set token info
         this.token.set({ token, uid, email });
         // Regain the initial data
         this.startup.load().then(() => {
-          let url = this.token.referrer!.url || '/';
+          let url = this.token.referrer!.url || '/admin/dashboard';
           if (url.includes('/auth')) {
-            url = '/';
+            url = '/admin/dashboard';
           }
           this.router.navigateByUrl(url);
         });
