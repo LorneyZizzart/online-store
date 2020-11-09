@@ -45,7 +45,7 @@ export class OrderListComponent implements OnInit {
   seeVoucher(item:Order){
     if(item.typePayment === "Transferencia"){
       const dialogRef = this._dialog.open(OrderViewVoucherComponent, {
-        width: '600px',
+        width: '100%',
         data : item
       });
     }
@@ -59,8 +59,8 @@ export const COLUMNS:MtxGridColumn[] = [
   { header: 'Correo electrónico', field: 'email', hide: true },
   { header: 'Fecha', field: 'date', width:'100px' },
   { header: 'Hora', field: 'time'},
-  { header: 'Método de pago', field: 'typePayment', hide: true},
-  { header: 'Dirección', field: 'address'},
+  { header: 'Método de pago', field: 'typePayment'},
+  { header: 'Dirección', field: 'address', hide: true},
   { header: 'Nota', field: 'note', hide: true},
 ];
 

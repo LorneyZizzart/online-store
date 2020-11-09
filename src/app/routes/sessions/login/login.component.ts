@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       .then((data:any) => {
         if(data.ok){
           data.client.avatar = '/assets/images/user.png';
-          this.successUser(data.client, '/');
+          this.successUser(data.client, '/auth/login');
           this.router.navigateByUrl('/');
         }else{
           this._authService.login(this.loginForm.value)

@@ -2,8 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SettingsService, User } from '@core';
-import { Field } from '@ngx-formly/core';
-import { Client, Order, OrderService, Result } from '@shared';
+import { Order, OrderService, Result } from '@shared';
 import { Product } from '@shared/interfaces/product.interface';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
@@ -91,8 +90,7 @@ export class StoreOrderComponent implements OnInit {
         })
         .catch((error) => {
           this.mensaje({  ok:false, titulo:'Error',  mensaje:'Se ha producido un error al enviar su pedido.' })
-        }); 
-        // window.open(`https://api.whatsapp.com/send/?phone=+59160717057&text=%3D%3D%3D%3D%3D%3D%EF%BF%BD+Pedido+780%3D%3D%3D%3D%3D%3D%0D%0A%0D%0A1x+Sushi+Mix+x+20+Piezas%0D%0A-+California+-+%0D%0A-+20%3A00+-++%0D%0A%0D%0ATake+Away%0D%0A%2ATotal+Pedido%3A+%24+1.200%2C00%2A%0D%0AEfectivo+-+%C2%BFCon+cu%C3%A1nto+abona%3F+%24+416.512%2C31%0D%0A%0D%0A%3D%3D%3D%3D%3D%3DCliente%3D%3D%3D%3D%3D%3D%0D%0A%0D%0A%EF%BF%BD+dasdas%0D%0A%EF%BF%BD+%2812%293123-123%0D%0A%0D%0A%3D%3D%3D%3D%3D%3DSeguimiento+del+Pedido%3D%3D%3D%3D%3D%3D%0D%0A%0D%0A&app_absent=0`  , "_blank");
+        });
     }
   }
 
@@ -100,8 +98,8 @@ export class StoreOrderComponent implements OnInit {
     const urlwhatsapp  = `https://api.whatsapp.com/send/?phone=`;
     const number  = `+59160717057`;
     const text = `&text=`
-    const order  = `============== 🛒 Pedido =============`;
-    const user  = `============== 🙋‍♂️ Cliente =============`;
+    const order  = `======= 🛒 Pedido =======`;
+    const user  = `======= 🙋‍♂️ Cliente =======`;
     const lineJump = `%0A%0A`;
     let products = "";
     let totalOrder = 0;
