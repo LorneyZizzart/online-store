@@ -1,6 +1,6 @@
 export const environment = {
   SERVER_ORIGIN: '',
-  production: false,
+  production: true,
   useHash: true,
   hmr: false,
   firebaseConfig: {

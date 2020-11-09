@@ -51,7 +51,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFirestoreModule, // auth
-    AngularFireStorageModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), // storage
+    AngularFireStorageModule, // storage
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), 
   ],
   providers: [
     httpInterceptorProviders, 
